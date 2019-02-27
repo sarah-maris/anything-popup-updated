@@ -30,6 +30,17 @@ function AnythingPopup_OpenForm(AnythingPopup_BoxContainer_Id,AnythingPopup_BoxC
     var pt = window.center({width:AnythingPopup_Width,height:AnythingPopup_Height});
 
     formdiv.style.top = pt.y + "px";
+
+    /*  AC CHANGE 02-26-19 *****************************************************
+        Check window width. If pop up width is greater than window
+        set left margin to 5% and width to 90%
+      *************************************************************************/
+    const windowWidth = window.innerWidth;
+    if (AnythingPopup_Width > windowWidth + 20) {
+      formdiv.style.left = "5%";
+      formdiv.style.maxWidth = "90%";
+    } else formdiv.style.left = pt.x + "px";
+
     formdiv.style.left = pt.x + "px";
 	
 	//formdiv.style.top = "200px";
