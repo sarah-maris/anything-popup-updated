@@ -7,7 +7,7 @@ if(!is_numeric($did)) { die('<p>Are you sure you want to do this?</p>'); }
 
 // First check if ID exist with requested ID
 $sSql = $wpdb->prepare(
-	"SELECT COUNT(*) AS `count` FROM ".AnythingPopupTable."
+	"SELECT COUNT(*) AS `count` FROM ".anythingpopuptable."
 	WHERE `pop_id` = %d",
 	array($did)
 );
@@ -26,7 +26,7 @@ else
 	
 	$sSql = $wpdb->prepare("
 		SELECT *
-		FROM `".AnythingPopupTable."`
+		FROM `".anythingpopuptable."`
 		WHERE `pop_id` = %d
 		LIMIT 1
 		",
@@ -131,7 +131,7 @@ if (isset($_POST['pop_form_submit']) && $_POST['pop_form_submit'] == 'yes')
 	if ($pop_error_found == FALSE)
 	{	
 		$sSql = $wpdb->prepare(
-				"UPDATE `".AnythingPopupTable."`
+				"UPDATE `".anythingpopuptable."`
 				SET `pop_width` = %s,
 				`pop_height` = %s,
 				`pop_headercolor` = %s,

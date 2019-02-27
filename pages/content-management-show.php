@@ -12,7 +12,7 @@ if (isset($_POST['frm_pop_display']) && $_POST['frm_pop_display'] == 'yes')
 	
 	// First check if ID exist with requested ID
 	$sSql = $wpdb->prepare(
-		"SELECT COUNT(*) AS `count` FROM ".AnythingPopupTable."
+		"SELECT COUNT(*) AS `count` FROM ".anythingpopuptable."
 		WHERE `pop_id` = %d",
 		array($did)
 	);
@@ -32,7 +32,7 @@ if (isset($_POST['frm_pop_display']) && $_POST['frm_pop_display'] == 'yes')
 			check_admin_referer('pop_form_show');
 			
 			//	Delete selected record from the table
-			$sSql = $wpdb->prepare("DELETE FROM `".AnythingPopupTable."`
+			$sSql = $wpdb->prepare("DELETE FROM `".anythingpopuptable."`
 					WHERE `pop_id` = %d
 					LIMIT 1", $did);
 			$wpdb->query($sSql);
@@ -55,7 +55,7 @@ if (isset($_POST['frm_pop_display']) && $_POST['frm_pop_display'] == 'yes')
 	<a class="add-new-h2" href="<?php echo ANYTHGPOPUP_ADMIN_URL; ?>&amp;ac=add"><?php _e('Add New', 'anything-popup'); ?></a></h2>
     <div class="tool-box">
 	<?php
-		$sSql = "SELECT * FROM `".AnythingPopupTable."` order by pop_id desc";
+		$sSql = "SELECT * FROM `".anythingpopuptable."` order by pop_id desc";
 		$myData = array();
 		$myData = $wpdb->get_results($sSql, ARRAY_A);
 		?>

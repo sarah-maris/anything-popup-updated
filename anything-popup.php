@@ -16,7 +16,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); }
 
 global $wpdb, $wp_version;
-define("AnythingPopupTable", $wpdb->prefix . "AnythingPopup");
+define("anythingpopuptable", $wpdb->prefix . "anythingpopup");
 define('AnythingPopup_FAV', 'http://www.gopiplus.com/work/2012/05/25/wordpress-popup-plugin-anything-popup/');
 
 if ( ! defined( 'ANYTHGPOPUP_PLUGIN_BASENAME' ) )
@@ -52,8 +52,8 @@ function AnythingPopup_shortcode( $atts )
 		return '';
 	}
 	$pop_id = $atts['id'];
-	
-	$sSql = "select * from ".AnythingPopupTable." where 1=1";
+
+	$sSql = "select * from ".anythingpopuptable." where 1=1";
 	if($pop_id == "RANDOM" || $pop_id == "")
 	{
 		$sSql = $sSql . " Order by rand()";
@@ -180,9 +180,9 @@ function AnythingPopup_shortcode( $atts )
 function AnythingPopup_install() 
 {
 	global $wpdb, $wp_version;
-	if($wpdb->get_var("show tables like '". AnythingPopupTable . "'") != AnythingPopupTable) 
+	if($wpdb->get_var("show tables like '". anythingpopuptable . "'") != anythingpopuptable)
 	{
-		$sSql = "CREATE TABLE IF NOT EXISTS `". AnythingPopupTable . "` (";
+		$sSql = "CREATE TABLE IF NOT EXISTS `". anythingpopuptable . "` (";
 		$sSql = $sSql . "`pop_id` INT NOT NULL AUTO_INCREMENT ,";
 		$sSql = $sSql . "`pop_width` int(11) NOT NULL default '450' ,";
 		$sSql = $sSql . "`pop_height` int(11) NOT NULL default '300' ,";
@@ -201,7 +201,7 @@ function AnythingPopup_install()
 		$con = $con . " when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap";
 		$con = $con . " into electronic typesetting, remaining essentially unchanged."; 
 		
-		$IsSql = "INSERT INTO `". AnythingPopupTable . "` (`pop_content`)"; 
+		$IsSql = "INSERT INTO `". anythingpopup . "` (`pop_content`)"; 
 		$sSql = $IsSql . " VALUES ('".$con."');";
 		$wpdb->query($sSql);
 	}

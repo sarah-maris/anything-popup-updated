@@ -102,7 +102,7 @@ if (isset($_POST['pop_form_submit']) && $_POST['pop_form_submit'] == 'yes')
 	if ($pop_error_found == FALSE)
 	{
 		$sql = $wpdb->prepare(
-			"INSERT INTO `".AnythingPopupTable."`
+			"INSERT INTO `".anythingpopuptable."`
 			(`pop_width`, `pop_height`, `pop_headercolor`, `pop_bordercolor`, `pop_header_fontcolor`, `pop_title`, `pop_content`, `pop_caption`)
 			VALUES(%s, %s, %s, %s, %s, %s, %s, %s)",
 			array($form['pop_width'], $form['pop_height'], $form['pop_headercolor'], $form['pop_bordercolor'], $form['pop_header_fontcolor'], 
