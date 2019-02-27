@@ -2,17 +2,17 @@
  *     Anything Popup
  *     Copyright (C) 2011 - 2016 www.gopiplus.com
  *     http://www.gopiplus.com/work/2012/05/25/wordpress-popup-plugin-anything-popup/
- * 
+ *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
  *     the Free Software Foundation, either version 3 of the License, or
  *     (at your option) any later version.
- * 
+ *
  *     This program is distributed in the hope that it will be useful,
  *     but WITHOUT ANY WARRANTY; without even the implied warranty of
  *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *     GNU General Public License for more details.
- * 
+ *
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -40,14 +40,12 @@ function AnythingPopup_OpenForm(AnythingPopup_BoxContainer_Id,AnythingPopup_BoxC
       formdiv.style.left = "5%";
       formdiv.style.maxWidth = "90%";
     } else formdiv.style.left = pt.x + "px";
-
-    formdiv.style.left = pt.x + "px";
 	
 	//formdiv.style.top = "200px";
     //formdiv.style.left = "550px";
 
     formdiv.handlerobj = new AnythingPopup_Move(formdiv);
-    
+
     var containerdiv = document.getElementById(AnythingPopup_BoxContainerBody_Id);
     if(containerdiv && containerdiv.SavedInnerHTML)
     {
@@ -81,7 +79,7 @@ function AnythingPopup_Move(div_obj)
     this.Init = function()
     {
         if (navigator.userAgent.indexOf("MSIE") >= 0 ||
-            navigator.userAgent.indexOf("Opera") >= 0) 
+            navigator.userAgent.indexOf("Opera") >= 0)
         {
             this.isIE = true;
         }
@@ -99,14 +97,14 @@ function AnythingPopup_Move(div_obj)
 
         _this = this.handlerobj;
 
-        if (_this.isIE) 
+        if (_this.isIE)
         {
-            x = window.event.clientX + 
-                document.documentElement.scrollLeft + 
+            x = window.event.clientX +
+                document.documentElement.scrollLeft +
                 document.body.scrollLeft;
 
-            y = window.event.clientY + 
-                document.documentElement.scrollTop + 
+            y = window.event.clientY +
+                document.documentElement.scrollTop +
                 document.body.scrollTop;
         }
         else
@@ -116,19 +114,19 @@ function AnythingPopup_Move(div_obj)
         }
 
         var top = parseInt(this.style.top,  10);
-        
+
         var client_y = y - top;
         if(!(client_y>0  && client_y<30))
         {
          return;
         }
-        
+
         _this.cursorStartX = x;
         _this.cursorStartY = y;
         _this.divStartX   = parseInt(this.style.left, 10);
         _this.divStartY   = top;
 
-        if (this.handlerobj.isIE) 
+        if (this.handlerobj.isIE)
         {
             document.attachEvent("onmousemove", _this.onmousemove);
             document.attachEvent("onmouseup",   _this.onmouseup);
@@ -155,7 +153,7 @@ function AnythingPopup_Move(div_obj)
         var y = 0;
 
 
-        if (_this.isIE) 
+        if (_this.isIE)
         {
             x = window.event.clientX + document.documentElement.scrollLeft
               + document.body.scrollLeft;
@@ -171,7 +169,7 @@ function AnythingPopup_Move(div_obj)
         _this._div_obj.style.left = (_this.divStartX + x - _this.cursorStartX) + "px";
         _this._div_obj.style.top  = (_this.divStartY   + y - _this.cursorStartY) + "px";
 
-        if (_this.isIE) 
+        if (_this.isIE)
         {
             window.event.cancelBubble = true;
             window.event.returnValue = false;
@@ -185,7 +183,7 @@ function AnythingPopup_Move(div_obj)
     this.onmouseup = function()
     {
          _this = AnythingPopup_Box;
-        if (_this.isIE) 
+        if (_this.isIE)
         {
             document.detachEvent("onmousemove", _this.onmousemove);
             document.detachEvent("onmouseup",   _this.onmouseup);
@@ -196,7 +194,7 @@ function AnythingPopup_Move(div_obj)
             document.removeEventListener("mouseup",   _this.onmouseup, true);
         }
         AnythingPopup_Box = null;
-        
+
     }
 
    this.Init();
